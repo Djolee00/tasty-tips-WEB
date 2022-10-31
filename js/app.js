@@ -23,4 +23,12 @@ const navBtnDOM = getElement('.nav-btn');
  */
 navBtnDOM.addEventListener('click',() => {
   links.classList.toggle('show-links');
-})
+});
+
+
+/**
+ * setting current year, I don't want to be hardcoded in HTML page
+ */
+const date = getElement('#date');
+const currentYear = new Date().getFullYear();
+date.textContent = currentYear;
