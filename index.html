@@ -16,6 +16,7 @@
     />
     <!-- main css -->
     <link rel="stylesheet" href="./css/main.css" />
+    
   </head>
   <body>
    
@@ -53,28 +54,122 @@
       <header class="hero">
         <div class="hero-container">
           <div class="hero-text">
-            <h1>Tasty Tips</h1>
-            <h4>A recipe is a story that ends with a good meal.</h4>
+            <h1>simply recipes</h1>
+            <h4>no fluff, just recipes</h4>
           </div>
         </div>
       </header>
       <!-- end of header -->
-
-      <!-- recipes container -->
       <section class="recipes-container">
-        <!-- tags container -->
-        <div class="tags-container">
+        <!-- tag container -->
+        <div class="search-sort-container">
           <h4>recipes</h4>
-          <div class="tags-list"></div>
+          <div class="search-sort-list">
+            <!-- sorting part -->
+            <label for="">Sort by:</label>
+            <select id="sort-select" class="form-select form-select-sm" aria-label=".form-select-sm example" onchange="">
+                <option value="prep_time" selected>Preparation time</option>
+                <option value="cook_time">Cook time</option>
+                <option value="name">Name</option>
+            </select>
+            <div class="form-check">
+                <input class="form-check-input" type="radio" name="sortOrderRadio" id="sortOrderRadio1" value="asc" onchange="">
+                <label class="form-check-label" for="sortOrderRadio1">
+                    Ascending
+                </label>
+            </div>
+            <div class="form-check">
+                <input class="form-check-input" type="radio" name="sortOrderRadio" id="sortOrderRadio2" value="desc" checked onchange="sortAds()">
+                <label class="form-check-label" for="sortOrderRadio2">
+                  Descending
+                </label>
+            </div>
+            <br><br>
+            <!-- searching part-->
+            <div class="first-row">
+              <div>
+                  <label for="">Name:</label>
+                  <input id="filter-brand" type="search" class="form-control form-control-dark" placeholder="Search..." aria-label="Search">
+              </div>
+              <div class="preptime-div">
+                  <div>
+                      <label for="">Preparation time from: </label>
+                      <input id="filter-priceFrom" type="number" class="form-control form-control-dark" placeholder="Search..." aria-label="Search">
+                  </div>
+                  <div>
+                      <label for="">Preparation time to:</label>
+                      <input id="filter-priceTo" type="number" class="form-control form-control-dark" placeholder="Search..." aria-label="Search">
+                  </div>
+              </div>
+              <div class="year-div">
+                  <div>
+                      <label for="">Cook time from:</label>
+                      <input id="filter-yearFrom" type="number" class="form-control form-control-dark" placeholder="Search..." aria-label="Search">
+                  </div>
+                  <div>
+                      <label for="">Cook time to:</label>
+                      <input id="filter-yearTo" type="number" class="form-control form-control-dark" placeholder="Search..." aria-label="Search">
+                  </div>
+              </div>
+              <hr>
+              <button type="button" class="search-icon btn btn-success" onclick="filterAds()">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
+                      <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"></path>
+                  </svg>
+              </button>
+          </div>
+          </div>
         </div>
-        <!--end of tags container -->
-        
-        <!-- recipes container -->
-        <div class="recipes-list"></div>
-        <!--end of recipes list -->
+        <!-- end of tag container -->
+        <!-- recipes list -->
+        <div class="recipes-list">
+          <!-- single recipe -->
+          <a href="single-recipe.html" class="recipe">
+            <img
+              src="./assets/recipes/recipe-1.jpeg"
+              class="img recipe-img"
+              alt=""
+            />
+            <h5>Carne Asada</h5>
+            <p>Prep : 15min | Cook : 5min</p>
+          </a>
+          <!-- end of single recipe -->
+          <!-- single recipe -->
+          <a href="single-recipe.html" class="recipe">
+            <img
+              src="./assets/recipes/recipe-2.jpeg"
+              class="img recipe-img"
+              alt=""
+            />
+            <h5>Greek Ribs</h5>
+            <p>Prep : 15min | Cook : 5min</p>
+          </a>
+          <!-- end of single recipe -->
+          <!-- single recipe -->
+          <a href="single-recipe.html" class="recipe">
+            <img
+              src="./assets/recipes/recipe-3.jpeg"
+              class="img recipe-img"
+              alt=""
+            />
+            <h5>Vegetable Soup</h5>
+            <p>Prep : 15min | Cook : 5min</p>
+          </a>
+          <!-- end of single recipe -->
+          <!-- single recipe -->
+          <a href="single-recipe.html" class="recipe">
+            <img
+              src="./assets/recipes/recipe-4.jpeg"
+              class="img recipe-img"
+              alt=""
+            />
+            <h5>Banana Pancakes</h5>
+            <p>Prep : 15min | Cook : 5min</p>
+          </a>
+          <!-- end of single recipe -->
+        </div>
+        <!-- end of recipes list -->
       </section>
-      <!-- end of recipes container -->
-
     </main>
     <!-- end of main -->
 
