@@ -188,7 +188,7 @@
         <!-- recipes list -->
         <div class="recipes-list">
           <!-- single recipe -->
-          <a href="single-recipe.html" class="recipe">
+          <a href="single-recipe.php" class="recipe">
             <img
               src="./assets/recipes/recipe-1.jpeg"
               class="img recipe-img"
@@ -199,7 +199,7 @@
           </a>
           <!-- end of single recipe -->
           <!-- single recipe -->
-          <a href="single-recipe.html" class="recipe">
+          <a href="single-recipe.php" class="recipe">
             <img
               src="./assets/recipes/recipe-2.jpeg"
               class="img recipe-img"
@@ -210,7 +210,7 @@
           </a>
           <!-- end of single recipe -->
           <!-- single recipe -->
-          <a href="single-recipe.html" class="recipe">
+          <a href="single-recipe.php" class="recipe">
             <img
               src="./assets/recipes/recipe-3.jpeg"
               class="img recipe-img"
@@ -221,7 +221,7 @@
           </a>
           <!-- end of single recipe -->
           <!-- single recipe -->
-          <a href="single-recipe.html" class="recipe">
+          <a href="single-recipe.php" class="recipe">
             <img
               src="./assets/recipes/recipe-4.jpeg"
               class="img recipe-img"
