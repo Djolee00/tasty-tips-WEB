@@ -700,3 +700,89 @@ Edit profile modal
   display: block;
   padding: 20px;
 }
+
+/*
+==================== 
+Single Recipe Page
+====================
+*/
+
+.recipe-hero {
+  display: grid;
+  gap: 3rem;
+}
+
+.recipe-hero-img {
+  height: 300px;
+  border-radius: var(--borderRadius);
+}
+
+.recipe-hero p {
+  color: var(--grey-600);
+}
+
+.recipe-icons {
+  display: grid;
+  grid-template-columns: repeat(3,1fr);
+  gap: 1rem;
+  margin: 2rem 0;
+  text-align: center;
+}
+
+.recipe-icons i {
+  font-size: 1.5rem;
+  color: var(--primary-500);
+}
+
+.recipe-icons h5, .recipe-icons p {
+  margin-bottom: 0;
+  font-size: 0.85rem;
+}
+
+
+.recipe-icons p {
+color: var(--grey-600);
+}
+
+@media screen and (min-width: 992px) {
+  .recipe-hero {
+    grid-template-columns: 4fr 5fr;
+    align-items: center;
+  }
+}
+
+.recipe-content {
+  padding: 3rem 0;
+  display: grid;
+  gap: 2rem 5rem;
+}
+
+@media screen and (min-width: 992px) {
+  .recipe-content {
+    grid-template-columns: 2fr 1fr;
+  }
+}
+
+.single-instruction header {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 1.5rem;
+  align-items: center;
+}
+
+.single-instruction header p {
+  text-transform: uppercase;
+  font-weight: 600;
+  margin-bottom: 0;
+  color: var(--primary-500) !important;
+}
+
+.single-instruction header > p {
+  color: var(--grey-700);
+}
+
+.single-instruction header div {
+  height: 2px;
+  background-color: var(--grey-300);
+}
+
