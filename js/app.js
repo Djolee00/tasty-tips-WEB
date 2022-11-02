@@ -1,3 +1,9 @@
+/*
+=============== 
+Navbar
+===============
+*/
+
 /**
  * 
  * @param {*} selector - css class
@@ -25,6 +31,11 @@ navBtnDOM.addEventListener('click',() => {
   links.classList.toggle('show-links');
 });
 
+/*
+=============== 
+Date
+===============
+*/
 
 /**
  * setting current year, I don't want to be hardcoded in HTML page
@@ -34,6 +45,16 @@ const currentYear = new Date().getFullYear();
 date.textContent = currentYear;
 
 
+/*
+===================================== 
+Background overlay and closing modals
+=====================================
+*/
+
+/**
+ *  function to set background overlay when modal needs to be shown
+ * @param {*} active - boolean to set or to remove background overlay
+ */
 
 function setOverlay(active) {
   const overlay = document.querySelector('#background-overlay');
@@ -44,24 +65,33 @@ function setOverlay(active) {
   }
 }
 
+/**
+ * functio to close active modals
+ */
+
 function closeModals() {
   setOverlay(false);
   setAddNewRecipeModal(false);
-  // setEditUserDataModal(false);
+  setEditProfileDataModal(false);
   // setDeleteAdModal(false);
-  // setDeleteProfileModal(false);
+  setDeleteProfileModal(false);
   // setEditAdModal(false);
 }
+
+/*
+==================== 
+Add new Recipe Modal
+====================
+*/
+
 
 /**
  * showing modal for adding recipe
  */
 
-const addNewRecipe = () => {
-  console.log("Sdasd");
-  setOverlay(true);
-  setAddNewRecipeModal(true);
-  return false;
+function popAddNewRecipeModal(bool) {
+  setOverlay(bool);
+  setAddNewRecipeModal(bool);
 }
 
 function setAddNewRecipeModal(active) {
@@ -73,3 +103,50 @@ function setAddNewRecipeModal(active) {
   }
 }
 
+
+/*
+=============== 
+Delete Profile
+===============
+*/
+
+function popDeleteProfileModal(bool) {
+  setOverlay(bool);
+  setDeleteProfileModal(bool);
+}
+
+function setDeleteProfileModal(active) {
+  const modal = document.querySelector('#deleteProfileModal');
+  if (active) {
+      modal.classList.add('active');
+  } else {
+      modal.classList.remove('active')
+  }
+}
+
+function deleteProfile() {
+  //TODO: 
+}
+
+
+/*
+=============== 
+Edit Profile
+===============
+*/
+
+function popEditProfileDataModal(bool) {
+  setOverlay(bool);
+  setEditProfileDataModal(bool);
+}
+
+
+
+function setEditProfileDataModal(active) {
+  const modal = document.querySelector('#editProfileDataModal');
+  if (active) {
+      modal.classList.add('active');
+  } else {
+      modal.classList.remove('active')
+  }
+}

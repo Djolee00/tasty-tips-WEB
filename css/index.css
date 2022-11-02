@@ -639,3 +639,64 @@ Add new recipe modal
 form textarea {
   width: 20vw;
 }
+
+/*
+==================== 
+Delete profile modal
+====================
+*/
+
+#deleteProfileModal{
+  display: none;
+  z-index: 1;
+}
+
+#deleteProfileModal.active{
+  width: 40vw;
+  min-width: 300px;
+  height: 300px;
+  background-color: white;
+  border-radius: 20px;
+  position: fixed;
+  top:50%;
+  left:50%;
+  transform: translate(-50%,-50%);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  padding: 20px;
+}
+
+#deleteProfileModal .question{
+  text-align: center;
+}
+#deleteProfileModal .buttons{
+  display: flex;
+  width: 100%;
+  justify-content: space-evenly;
+}
+
+/*
+==================== 
+Edit profile modal
+====================
+*/
+
+#editProfileDataModal{
+  display: none;
+  z-index: 1;
+}
+
+#editProfileDataModal.active{
+  width: 60vw;
+  min-width: 400px;
+  height: 500px;
+  background-color: white;
+  border-radius: 20px;
+  position: fixed;
+  top:50%;
+  left:50%;
+  transform: translate(-50%,-50%);
+  display: block;
+  padding: 20px;
+}
