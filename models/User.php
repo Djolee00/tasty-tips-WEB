@@ -20,10 +20,18 @@ class User{
      */
     function login(mysqli $conn)
     {
-        $sql = "SELECT * FROM users WHERE username = '$this->username' AND password = '$this->password';";
+
+        $sql = "SELECT id,username,password,email FROM user WHERE username = ? AND password = ?";
+
+        $stmt = $conn->prepare($sql);   // using prepared statement to avoid SQL Injection
+        $stmt->bind_param("ss", $this->username, $this->password);   //s for string
+
+
+        $stmt->execute();
+
+        $result = $stmt->get_result();
         
         
-        $result = $conn->query($sql);
         if($result && $result->num_rows>0)
         {
             $row = $result->fetch_assoc();   //return assoc array, where each element is column with name in table
@@ -31,10 +39,15 @@ class User{
             $this->id = $row['id'];
             $this->email = $row['email'];
 
+            $stmt->close();
+
             return true;
 
-        }else return false;
-        
+        }else 
+        {
+            $stmt->close();
+            return false;
+        }
     }
     
 

@@ -1,3 +1,48 @@
+<?php 
+require 'db_connection.php';
+require 'models/User.php';
+
+$login_message = NULL;
+$registration_message = NULL;
+
+if(isset($_POST['login']) && isset($_POST['username']) && isset($_POST['password']))
+{
+    $username =  sanitizeUserInput($_POST['username']);
+    $password = sanitizeUserInput($_POST['password']);
+
+
+    $user = new User($username,$password);
+
+    if($user->login($conn))  // conn from dbConnection.php
+    {  // successful login
+        
+        session_start();
+        $_SESSION['user'] = $user;
+        header('Location: index.php');
+        exit();
+    }else
+    {   // log in failed
+        $login_message = "Wrong username or password";
+    } 
+
+}
+
+
+
+/**
+ * sanitize - to prevent any unsafe data which user can enter
+ */
+function sanitizeUserInput($data){
+    $data = trim($data); 
+    $data = stripslashes($data);   // removes '/', this is important for showing data through app
+    $data = htmlspecialchars($data); // converts HTML special chars to normal chars
+    return $data;
+}
+
+?>
+
+
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -76,7 +121,11 @@
                 </div>
             </div>
         </div>
-        <!-- <?php
+
+        
+        <!-- login failed message popup-->
+
+         <?php
         if (!empty($login_message)) {
             echo '<div class="alert alert-danger error-login">
             ' . $login_message . '
@@ -84,14 +133,13 @@
         }
         ?>
 
-        <?php
+       <!-- <?php
         if (!empty($register_message)) {
             echo '<div class="alert alert-danger error-login">
             ' . $register_message . '
             </div>';
         }
         ?> -->
-
     </div>
 
     <script src="js/login.js"></script>
