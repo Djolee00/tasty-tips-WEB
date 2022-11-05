@@ -1,3 +1,22 @@
+<?php 
+
+require 'models/User.php';
+require 'db_connection.php';
+
+session_start();
+if(!isset($_SESSION['user'])) {
+  header('Location: login.php');
+  exit();
+}
+
+
+
+
+?>
+
+
+
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -42,7 +61,7 @@
           >
 
           <div class="nav-link logout-link">
-            <a href="" class="btn">Log out</a>
+            <a href="logout.php" class="btn">Log out</a>
           </div>
         </div>
       </div>
