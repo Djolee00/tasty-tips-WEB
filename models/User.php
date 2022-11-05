@@ -30,7 +30,7 @@ class User{
         $stmt->execute();
 
         $result = $stmt->get_result();
-        
+        $success = false;
         
         if($result && $result->num_rows>0)
         {
@@ -39,18 +39,30 @@ class User{
             $this->id = $row['id'];
             $this->email = $row['email'];
 
-            $stmt->close();
+            $success = true;
 
-            return true;
-
-        }else 
-        {
-            $stmt->close();
-            return false;
         }
+
+        $stmt->close();
+        return $success;
     }
     
 
+    function create(mysqli $conn)
+    {
+        $sql = "INSERT INTO user (username,password,email) VALUES (?,?,?)";
+
+        $stmt = $conn->prepare($sql);   // using prepared statement to avoid SQL Injection
+        $stmt->bind_param("sss", $this->username, $this->password,$this->email);   //s for string
+
+        
+        $success = $stmt->execute();
+
+        $stmt->close();
+
+        return $success;
+
+    }
 }
 
 
