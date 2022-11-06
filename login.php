@@ -19,7 +19,7 @@ if(isset($_POST['login']) && isset($_POST['username']) && isset($_POST['password
     {  // successful login
         
         session_start();
-        $_SESSION['user'] = $user;
+        $_SESSION['user'] = serialize($user);
         header('Location: index.php');
         exit();
     }else

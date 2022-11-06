@@ -9,6 +9,12 @@ if(!isset($_SESSION['user'])) {
   exit();
 }
 
+if (isset($_GET['message'])) {
+  $message = $_GET['message'];
+  echo "<script>alert($message)</script>";
+}
+
+$user = unserialize($_SESSION['user']);
 
 
 
@@ -42,7 +48,7 @@ if(!isset($_SESSION['user'])) {
       <div class="nav-center">
         <!-- header -->
         <div class="nav-header">
-          <a href="index.html" class="nav-logo">
+          <a href="index.php" class="nav-logo">
             <img src="./assets/logo.png" alt="simply recipes" />
           </a>
           <button type="button" class="btn nav-btn">
@@ -367,21 +373,21 @@ if(!isset($_SESSION['user'])) {
       <div class="editProfileDataModal">
         <strong>Change your profile data:</strong>
       </div>
-      <form method="POST" action="">
-        <label for="username">Current username: </label>
+      <form method="POST" action="handlers/edit_user.php">
+        <label for="username">Username: </label>
         <input
           type="text"
           name="username"
           id="username"
-          value=""
+          value="<?php  echo $user->getUsername();?>"
         />
 
-        <label for="username">Current email: </label>
+        <label for="username">Email: </label>
         <input
-          type="text"
+          type="email"
           name="email"
           id="email"
-          value=""
+          value="<?php echo $user->getEmail()?>"
         />
         <button type="submit" class="btn btn-primary">Save</button>
       </form>

@@ -63,6 +63,52 @@ class User{
         return $success;
 
     }
+
+    function update(mysqli $conn)
+    {
+        $sql = "UPDATE user SET username = ?, password = ?, email = ? WHERE id = ?";
+
+        $stmt = $conn->prepare($sql);
+        $stmt->bind_param("sssi",$this->username,$this->password,$this->email,$this->id);
+
+        $success = $stmt->execute();
+
+        $stmt->close();
+
+        return $success;
+    }
+
+    function getUsername()
+    {
+        return $this->username;
+    }
+
+    function getEmail()
+    {
+        return $this->email;
+    }
+
+    
+    function getPassword()
+    {
+        return $this->password;
+    }
+
+    function setUsername($username)
+    {
+         $this->username = $username;
+    }
+
+    function setEmail($email)
+    {
+         $this->email = $email;
+    }
+
+    
+    function setPassword($password)
+    {
+         $this->password = $password;
+    }
 }
 
 
