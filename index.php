@@ -382,7 +382,7 @@ $user = unserialize($_SESSION['user']);
           value="<?php  echo $user->getUsername();?>"
         />
 
-        <label for="username">Email: </label>
+        <label for="email">Email: </label>
         <input
           type="email"
           name="email"
@@ -393,7 +393,7 @@ $user = unserialize($_SESSION['user']);
       </form>
       <hr />
       <div class="editProfileDataModal"><strong>Change password: </strong></div>
-      <form method="POST" action="">
+      <form method="POST" action="handlers/edit_user.php">
         <label for="old-password">Old password: </label>
         <input type="password" name="old-password" id="old-password" />
 
