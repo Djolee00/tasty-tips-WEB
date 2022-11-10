@@ -137,35 +137,11 @@ $user = unserialize($_SESSION['user']);
         </div>
       </div>
       <!-- end of tag container -->
+
       <!-- recipes list -->
       <div class="recipes-list">
         <!-- single recipe -->
-        <a href="single-recipe.php" class="recipe">
-          <img src="./assets/recipes/recipe-1.jpeg" class="img recipe-img" alt="" />
-          <h5>Carne Asada</h5>
-          <p>Prep : 15min | Cook : 5min</p>
-        </a>
-        <!-- end of single recipe -->
-        <!-- single recipe -->
-        <a href="single-recipe.php" class="recipe">
-          <img src="./assets/recipes/recipe-2.jpeg" class="img recipe-img" alt="" />
-          <h5>Greek Ribs</h5>
-          <p>Prep : 15min | Cook : 5min</p>
-        </a>
-        <!-- end of single recipe -->
-        <!-- single recipe -->
-        <a href="single-recipe.php" class="recipe">
-          <img src="./assets/recipes/recipe-3.jpeg" class="img recipe-img" alt="" />
-          <h5>Vegetable Soup</h5>
-          <p>Prep : 15min | Cook : 5min</p>
-        </a>
-        <!-- end of single recipe -->
-        <!-- single recipe -->
-        <a href="single-recipe.php" class="recipe">
-          <img src="./assets/recipes/recipe-4.jpeg" class="img recipe-img" alt="" />
-          <h5>Banana Pancakes</h5>
-          <p>Prep : 15min | Cook : 5min</p>
-        </a>
+
         <!-- end of single recipe -->
       </div>
       <!-- end of recipes list -->
@@ -186,12 +162,13 @@ $user = unserialize($_SESSION['user']);
   <!-- modal for creating recipe -->
   <div id="addNewRecipeModal">
     <div class="addNewRecipeTitle">Describe your recipe:</div>
-    <form method="POST" action="" enctype="multipart/form-data">
+    <form method="POST" action="handlers/add_recipe.php" enctype="multipart/form-data">
       <!-- multipart/form-data is needed when we use type="file"-->
-      <input type="text" name="title" placeholder="Recipe name" required />
-      <input type="number" name="prep_time" placeholder="Preparation time in minutes" required />
-      <input type="number" name="cook_time" placeholder="Cook time in minutes" required />
-      <input type="number" name="serving" placeholder="Number of servings" required />
+
+      <input type="name" name="name" placeholder="Recipe name" required />
+      <input type="number" min=1 name="prep_time" placeholder="Preparation time in minutes" required />
+      <input type="number" min=1 name="cook_time" placeholder="Cook time in minutes" required />
+      <input type="number" min=1 name="servings" placeholder="Number of servings" required />
       <input type="text" name="step_1" placeholder="Step 1" required />
       <input type="text" name="step_2" placeholder="Step 2" required />
       <input type="text" name="step_3" placeholder="Step 3" required />
