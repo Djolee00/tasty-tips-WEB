@@ -1,18 +1,19 @@
-<?php 
+<?php
 
-class User{
+class User
+{
 
     private $id;
     private $username;
     private $password;
     private $email;
 
-    function __construct($username=null,$password=null,$email=null)
+    function __construct($username = null, $password = null, $email = null)
     {
-        $this->id=NULL;
-        $this->username=$username;
-        $this->password=$password;
-        $this->email=$email;
+        $this->id = NULL;
+        $this->username = $username;
+        $this->password = $password;
+        $this->email = $email;
     }
 
     /**
@@ -31,45 +32,50 @@ class User{
 
         $result = $stmt->get_result();
         $success = false;
-        
-        if($result && $result->num_rows>0)
-        {
+
+        if ($result && $result->num_rows > 0) {
             $row = $result->fetch_assoc();   //return assoc array, where each element is column with name in table
-            
+
             $this->id = $row['id'];
             $this->email = $row['email'];
 
             $success = true;
-
         }
 
         $stmt->close();
         return $success;
     }
-    
+
+
+    /**
+     * function to create in user
+     */
 
     function create(mysqli $conn)
     {
         $sql = "INSERT INTO user (username,password,email) VALUES (?,?,?)";
 
         $stmt = $conn->prepare($sql);   // using prepared statement to avoid SQL Injection
-        $stmt->bind_param("sss", $this->username, $this->password,$this->email);   //s for string
+        $stmt->bind_param("sss", $this->username, $this->password, $this->email);   //s for string
 
-        
+
         $success = $stmt->execute();
 
         $stmt->close();
 
         return $success;
-
     }
+
+    /**
+     * function to update in user
+     */
 
     function update(mysqli $conn)
     {
         $sql = "UPDATE user SET username = ?, password = ?, email = ? WHERE id = ?";
 
         $stmt = $conn->prepare($sql);
-        $stmt->bind_param("sssi",$this->username,$this->password,$this->email,$this->id);
+        $stmt->bind_param("sssi", $this->username, $this->password, $this->email, $this->id);
 
         $success = $stmt->execute();
 
@@ -77,6 +83,28 @@ class User{
 
         return $success;
     }
+
+    /**
+     * static function to delete in user
+     * trying static functions, it doesn't need to be
+     */
+
+    static function delete(mysqli $conn, $id)
+    {
+        // TODO : Deleting recipes
+
+        $sql = "DELETE FROM user WHERE id = ?";
+        $stmt = $conn->prepare($sql);
+        $stmt->bind_param("i", $id);
+
+        $success = $stmt->execute();
+
+
+        return $success;
+    }
+
+
+    // getters
 
     function getUsername()
     {
@@ -88,29 +116,33 @@ class User{
         return $this->email;
     }
 
-    
+
     function getPassword()
     {
         return $this->password;
     }
 
+
+    function getId()
+    {
+        return $this->id;
+    }
+
+    // setters
+
     function setUsername($username)
     {
-         $this->username = $username;
+        $this->username = $username;
     }
 
     function setEmail($email)
     {
-         $this->email = $email;
+        $this->email = $email;
     }
 
-    
+
     function setPassword($password)
     {
-         $this->password = $password;
+        $this->password = $password;
     }
 }
-
-
-
-?>

@@ -5,7 +5,7 @@
 }
 /* fonts */
 
-@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;600&family=Montserrat&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;600&family=Montserrat&display=swap");
 html {
   font-size: 100%;
 } /*16px*/
@@ -42,8 +42,8 @@ html {
   --green-dark: #0f5132;
 
   /* fonts  */
-  --headingFont: 'Roboto', sans-serif;
-  --bodyFont: 'Nunito', sans-serif;
+  --headingFont: "Roboto", sans-serif;
+  --bodyFont: "Nunito", sans-serif;
   --smallText: 0.7em;
   /* rest of the vars */
   --backgroundColor: var(--grey-50);
@@ -294,7 +294,7 @@ Navbar
 }
 
 .nav-btn i {
-  font-size: 1.25rem; 
+  font-size: 1.25rem;
 }
 
 .nav-links {
@@ -306,11 +306,11 @@ Navbar
 }
 
 .show-links {
-  height:310px;
+  height: 310px;
 }
 
 .nav-link {
-  display:block;
+  display: block;
   text-align: center;
   text-transform: capitalize;
   color: var(--grey-900);
@@ -320,10 +320,8 @@ Navbar
   transition: var(--transition);
 }
 
-
-
 .nav-link:hover {
-  color: var(--primary-500)
+  color: var(--primary-500);
 }
 
 .logout-link a {
@@ -334,7 +332,7 @@ Navbar
    css which is applied when we are full screen
 */
 
-@media screen and (min-width:992px) {
+@media screen and (min-width: 992px) {
   .nav-btn {
     display: none;
   }
@@ -360,8 +358,8 @@ Navbar
     width: 100%;
   }
 
-  .nav-links button{
-      margin-right: 1rem;
+  .nav-links button {
+    margin-right: 1rem;
   }
 
   .nav-link {
@@ -370,7 +368,6 @@ Navbar
     margin-right: 1rem;
     font-size: 1rem;
   }
-
 
   .logout-link {
     margin-left: auto;
@@ -393,9 +390,6 @@ Page
   min-height: calc(100vh - (6rem + 4rem));
 }
 
-
-
-
 /*
 =============== 
 Footer
@@ -404,7 +398,7 @@ Footer
 
 .page-footer {
   height: 4rem;
-  text-align:center;
+  text-align: center;
   background: var(--black);
   color: var(--white);
   display: flex;
@@ -412,12 +406,12 @@ Footer
   justify-content: center;
 }
 
-
 .page-footer p {
   margin-bottom: 0;
 }
 
-.footer-logo, .page-footer a {
+.footer-logo,
+.page-footer a {
   color: var(--primary-500);
 }
 
@@ -429,7 +423,7 @@ Hero
 
 .hero {
   height: 40vh;
-  background: url('../assets/main.jpeg') center/cover no-repeat;
+  background: url("../assets/main.jpeg") center/cover no-repeat;
   margin-bottom: 2rem;
   border-radius: var(--borderRadius);
   position: relative;
@@ -439,8 +433,8 @@ Hero
   position: absolute;
   width: 100%;
   height: 100%;
-  top:0;
-  left:0;
+  top: 0;
+  left: 0;
   background-color: rgba(0, 0, 0, 0.4);
   border-radius: var(--borderRadius);
   display: flex;
@@ -453,13 +447,12 @@ Hero
   color: var(--white);
 }
 
-@media screen and (min-width:768) {
-   .hero-text h1 {
+@media screen and (min-width: 768) {
+  .hero-text h1 {
     font-size: 4rem;
     margin-bottom: 0;
-   }
+  }
 }
-
 
 /*
 =============== 
@@ -488,7 +481,7 @@ Recipes
   margin-bottom: 0.5rem;
   font-weight: 500;
 }
-.search-sort-list{
+.search-sort-list {
   display: grid;
   grid-template-columns: 1fr;
 }
@@ -515,7 +508,7 @@ Recipes
   letter-spacing: var(--letterSpacing);
 }
 
-@media screen and (min-width: 576px){
+@media screen and (min-width: 576px) {
   .recipes-list {
     grid-template-columns: 1fr 1fr;
   }
@@ -524,14 +517,14 @@ Recipes
   }
 }
 
-@media screen and (min-width: 992px){
+@media screen and (min-width: 992px) {
   .recipes-container {
     grid-template-columns: 200px 1fr;
   }
   .recipe p {
     font-size: 0.85rem;
   }
-  .search-sort-container{
+  .search-sort-container {
     order: 0;
   }
   .search-sort-list {
@@ -539,7 +532,7 @@ Recipes
   }
 }
 
-@media screen and (min-width: 1200px){
+@media screen and (min-width: 1200px) {
   .recipe h5 {
     font-size: 1.15rem;
   }
@@ -555,19 +548,18 @@ Add new recipe modal
 ===============
 */
 
-
-#background-overlay{
+#background-overlay {
   display: none;
 }
 
-#background-overlay.active{
+#background-overlay.active {
   position: fixed;
   display: block;
-  top:0;
+  top: 0;
   width: 100vw;
   height: 100vh;
   right: 0;
-  background-color: rgba(0, 0, 0, 0.644); 
+  background-color: rgba(0, 0, 0, 0.644);
 }
 
 /*
@@ -575,37 +567,35 @@ Add new recipe modal
 Add new recipe modal 
 ===============
 */
-#addNewRecipeModal{
+#addNewRecipeModal {
   display: none;
   z-index: 1;
 }
 
-#addNewRecipeModal .close-modal-btn > svg{
+#addNewRecipeModal .close-modal-btn > svg {
   width: 16px;
   height: 16px;
 }
 
-#addNewRecipeModal.active{
+#addNewRecipeModal.active {
   width: 60vw;
   min-width: 400px;
   height: 400px;
   background-color: white;
   border-radius: 20px;
   position: fixed;
-  top:50%;
-  left:50%;
-  transform: translate(-50%,-50%);
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
   display: block;
   padding: 20px;
 }
 
-.addNewRecipeModalTitle{
+.addNewRecipeModalTitle {
   text-align: center;
 }
 
-
-
-#addNewRecipeModal.active > form{
+#addNewRecipeModal.active > form {
   display: grid;
   grid-template-columns: 1fr 1fr;
   grid-template-rows: repeat(6, 1fr);
@@ -614,19 +604,19 @@ Add new recipe modal
   justify-items: center;
 }
 
-#addNewRecipeModal.active > form > textarea[name="additional"]{
+#addNewRecipeModal.active > form > textarea[name="additional"] {
   grid-row: span 2;
   width: 100%;
 }
 
-#addNewRecipeModal.active > form > button[type='submit']{
+#addNewRecipeModal.active > form > button[type="submit"] {
   grid-column: span 2;
   margin: 15px;
   height: 40px;
   width: 200px;
 }
 
-#addNewRecipeModal.active > form > input{
+#addNewRecipeModal.active > form > input {
   width: 70%;
   margin: auto;
   min-width: 200px;
@@ -646,31 +636,31 @@ Delete profile modal
 ====================
 */
 
-#deleteProfileModal{
+#deleteProfileModal {
   display: none;
   z-index: 1;
 }
 
-#deleteProfileModal.active{
+#deleteProfileModal.active {
   width: 40vw;
   min-width: 300px;
   height: 300px;
   background-color: white;
   border-radius: 20px;
   position: fixed;
-  top:50%;
-  left:50%;
-  transform: translate(-50%,-50%);
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
   padding: 20px;
 }
 
-#deleteProfileModal .question{
+#deleteProfileModal .question {
   text-align: center;
 }
-#deleteProfileModal .buttons{
+#deleteProfileModal .buttons {
   display: flex;
   width: 100%;
   justify-content: space-evenly;
@@ -682,21 +672,21 @@ Edit profile modal
 ====================
 */
 
-#editProfileDataModal{
+#editProfileDataModal {
   display: none;
   z-index: 1;
 }
 
-#editProfileDataModal.active{
+#editProfileDataModal.active {
   width: 60vw;
   min-width: 400px;
   height: 500px;
   background-color: white;
   border-radius: 20px;
   position: fixed;
-  top:50%;
-  left:50%;
-  transform: translate(-50%,-50%);
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
   display: block;
   padding: 20px;
 }
@@ -723,7 +713,7 @@ Single Recipe Page
 
 .recipe-icons {
   display: grid;
-  grid-template-columns: repeat(3,1fr);
+  grid-template-columns: repeat(3, 1fr);
   gap: 1rem;
   margin: 2rem 0;
   text-align: center;
@@ -734,14 +724,14 @@ Single Recipe Page
   color: var(--primary-500);
 }
 
-.recipe-icons h5, .recipe-icons p {
+.recipe-icons h5,
+.recipe-icons p {
   margin-bottom: 0;
   font-size: 0.85rem;
 }
 
-
 .recipe-icons p {
-color: var(--grey-600);
+  color: var(--grey-600);
 }
 
 @media screen and (min-width: 992px) {
@@ -785,4 +775,3 @@ color: var(--grey-600);
   height: 2px;
   background-color: var(--grey-300);
 }
-

@@ -1,4 +1,4 @@
-<?php 
+<?php
 require 'db_connection.php';
 require 'models/User.php';
 
@@ -6,59 +6,48 @@ $login_message = NULL;
 $failed_registration_message = NULL;
 $successful_registration_message = NULL;
 
-if(isset($_POST['login']) && isset($_POST['username']) && isset($_POST['password']))
-{
+if (isset($_POST['login']) && isset($_POST['username']) && isset($_POST['password'])) {
     $username =  sanitizeUserInput($_POST['username']);
     $password = sanitizeUserInput($_POST['password']);
 
 
 
-    $user = new User($username,$password);
+    $user = new User($username, $password);
 
-    if($user->login($conn))  // conn from dbConnection.php
+    if ($user->login($conn))  // conn from dbConnection.php
     {  // successful login
-        
+
         session_start();
         $_SESSION['user'] = serialize($user);
         header('Location: index.php');
         exit();
-    }else
-    {   // log in failed
+    } else {   // log in failed
         $login_message = "Wrong username or password";
-    } 
+    }
 }
 
-if(isset($_POST['register']) && isset($_POST['username']) && isset($_POST['password']))
-{
+if (isset($_POST['register']) && isset($_POST['username']) && isset($_POST['password'])) {
     $username = sanitizeUserInput($_POST['username']);
     $password = sanitizeUserInput($_POST['password']);
-    $confirmPassword = sanitizeUserInput($_POST['confirm-password']);   
+    $confirmPassword = sanitizeUserInput($_POST['confirm-password']);
     $email = sanitizeUserInput($_POST['email']);
 
 
-    if (empty($username) || empty($password) || empty($email) || empty($confirmPassword))
-    {
+    if (empty($username) || empty($password) || empty($email) || empty($confirmPassword)) {
         $failed_registration_message = "You need to enter every data";
-    } elseif ($confirmPassword != $password)
-    {
+    } elseif ($confirmPassword != $password) {
         $failed_registration_message = "Passwords do not match";
-    } else
-    {
-        $user = new User($username,$password,$email);
+    } else {
+        $user = new User($username, $password, $email);
         $result = $user->create($conn);
 
-        if(!$result)
-        {
+        if (!$result) {
             // app failed to insert new user
             $failed_registration_message = "Failed to register new user. Try again";
-        }else
-        {
+        } else {
             $successful_registration_message = "You have successfully registered";
         }
-
     }
-
-    
 }
 
 
@@ -67,8 +56,9 @@ if(isset($_POST['register']) && isset($_POST['username']) && isset($_POST['passw
 /**
  * sanitize - to prevent any unsafe data which user can enter
  */
-function sanitizeUserInput($data){
-    $data = trim($data); 
+function sanitizeUserInput($data)
+{
+    $data = trim($data);
     $data = stripslashes($data);   // removes '/', this is important for showing data through app
     $data = htmlspecialchars($data); // converts HTML special chars to normal chars
     return $data;
@@ -89,8 +79,8 @@ function sanitizeUserInput($data){
     <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
     <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
     <link rel="stylesheet" href="css/login.css">
-     <!-- favicon -->
-     <link rel="shortcut icon" href="./assets/favicon.ico" type="image/x-icon" />
+    <!-- favicon -->
+    <link rel="shortcut icon" href="./assets/favicon.ico" type="image/x-icon" />
 
     <title>Login | TastyTips</title>
 </head>
@@ -157,10 +147,10 @@ function sanitizeUserInput($data){
             </div>
         </div>
 
-        
+
         <!-- login failed message popup-->
 
-         <?php
+        <?php
         if (!empty($login_message)) {
             echo '<div class="alert alert-danger error-login">
             ' . $login_message . '
@@ -174,14 +164,14 @@ function sanitizeUserInput($data){
             ' . $failed_registration_message . '
             </div>';
         }
-        ?> 
+        ?>
         <?php
         if (!empty($successful_registration_message)) {
             echo '<div class="alert alert-success error-login">
             ' . $successful_registration_message . '
             </div>';
         }
-        ?> 
+        ?>
     </div>
 
     <script src="js/login.js"></script>

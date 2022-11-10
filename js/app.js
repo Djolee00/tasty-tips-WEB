@@ -1,3 +1,5 @@
+// This JS file is primarily for modals, effect and current date
+
 /*
 =============== 
 Navbar
@@ -5,30 +7,26 @@ Navbar
 */
 
 /**
- * 
+ *
  * @param {*} selector - css class
  * @returns first element which has that css class (specified in selector)
  */
 const getElement = (selector) => {
-
   const element = document.querySelector(selector);
-  if(element) return element;
+  if (element) return element;
   throw Error(`Please double check your class names, there is no
                ${selector} class`);
+};
 
-}
-
-
-
-const links = getElement('.nav-links');
-const navBtnDOM = getElement('.nav-btn');
+const links = getElement(".nav-links");
+const navBtnDOM = getElement(".nav-btn");
 
 /**
  * fucntion to add class on nav-links when menu bar button is clicked
  * (this is used when site is not in full screen)
  */
-navBtnDOM.addEventListener('click',() => {
-  links.classList.toggle('show-links');
+navBtnDOM.addEventListener("click", () => {
+  links.classList.toggle("show-links");
 });
 
 /*
@@ -40,10 +38,9 @@ Date
 /**
  * setting current year, I don't want to be hardcoded in HTML page
  */
-const date = getElement('#date');
+const date = getElement("#date");
 const currentYear = new Date().getFullYear();
 date.textContent = currentYear;
-
 
 /*
 ===================================== 
@@ -57,11 +54,11 @@ Background overlay and closing modals
  */
 
 function setOverlay(active) {
-  const overlay = document.querySelector('#background-overlay');
+  const overlay = document.querySelector("#background-overlay");
   if (active) {
-      overlay.classList.add('active');
+    overlay.classList.add("active");
   } else {
-      overlay.classList.remove('active')
+    overlay.classList.remove("active");
   }
 }
 
@@ -73,9 +70,7 @@ function closeModals() {
   setOverlay(false);
   setAddNewRecipeModal(false);
   setEditProfileDataModal(false);
-  // setDeleteAdModal(false);
   setDeleteProfileModal(false);
-  // setEditAdModal(false);
 }
 
 /*
@@ -83,7 +78,6 @@ function closeModals() {
 Add new Recipe Modal
 ====================
 */
-
 
 /**
  * showing modal for adding recipe
@@ -95,14 +89,13 @@ function popAddNewRecipeModal(bool) {
 }
 
 function setAddNewRecipeModal(active) {
-  const modal = document.querySelector('#addNewRecipeModal');
+  const modal = document.querySelector("#addNewRecipeModal");
   if (active) {
-      modal.classList.add('active');
+    modal.classList.add("active");
   } else {
-      modal.classList.remove('active')
+    modal.classList.remove("active");
   }
 }
-
 
 /*
 =============== 
@@ -116,18 +109,13 @@ function popDeleteProfileModal(bool) {
 }
 
 function setDeleteProfileModal(active) {
-  const modal = document.querySelector('#deleteProfileModal');
+  const modal = document.querySelector("#deleteProfileModal");
   if (active) {
-      modal.classList.add('active');
+    modal.classList.add("active");
   } else {
-      modal.classList.remove('active')
+    modal.classList.remove("active");
   }
 }
-
-function deleteProfile() {
-  //TODO: 
-}
-
 
 /*
 =============== 
@@ -140,13 +128,11 @@ function popEditProfileDataModal(bool) {
   setEditProfileDataModal(bool);
 }
 
-
-
 function setEditProfileDataModal(active) {
-  const modal = document.querySelector('#editProfileDataModal');
+  const modal = document.querySelector("#editProfileDataModal");
   if (active) {
-      modal.classList.add('active');
+    modal.classList.add("active");
   } else {
-      modal.classList.remove('active')
+    modal.classList.remove("active");
   }
 }

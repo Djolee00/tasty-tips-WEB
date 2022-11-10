@@ -4,7 +4,7 @@ require '../db_connection.php';
 require '../models/User.php';
 
 /**
- *  this is method to handle POST request for changing username and/or email
+ *  this is file which handles POST request for changing username and/or email
  */
 
 if(isset($_POST['username']) && isset($_POST['email']))
@@ -56,11 +56,6 @@ if(isset($_POST['old-password']) && isset($_POST['new-password']))
 }
 
 
-
-
-
-
-
 /**
  * sanitize - to prevent any unsafe data which user can enter
  */
@@ -70,6 +65,3 @@ function sanitizeUserInput($data){
     $data = htmlspecialchars($data); // converts HTML special chars to normal chars
     return $data;
 }
-
-
-?>
