@@ -22,7 +22,7 @@ const links = getElement(".nav-links");
 const navBtnDOM = getElement(".nav-btn");
 
 /**
- * fucntion to add class on nav-links when menu bar button is clicked
+ * statement to add class on nav-links when menu bar button is clicked
  * (this is used when site is not in full screen)
  */
 navBtnDOM.addEventListener("click", () => {

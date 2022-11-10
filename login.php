@@ -6,6 +6,7 @@ $login_message = NULL;
 $failed_registration_message = NULL;
 $successful_registration_message = NULL;
 
+// login 
 if (isset($_POST['login']) && isset($_POST['username']) && isset($_POST['password'])) {
     $username =  sanitizeUserInput($_POST['username']);
     $password = sanitizeUserInput($_POST['password']);
@@ -26,6 +27,7 @@ if (isset($_POST['login']) && isset($_POST['username']) && isset($_POST['passwor
     }
 }
 
+// registration 
 if (isset($_POST['register']) && isset($_POST['username']) && isset($_POST['password'])) {
     $username = sanitizeUserInput($_POST['username']);
     $password = sanitizeUserInput($_POST['password']);
@@ -39,6 +41,8 @@ if (isset($_POST['register']) && isset($_POST['username']) && isset($_POST['pass
         $failed_registration_message = "Passwords do not match";
     } elseif (!User::checkUsername($conn, $username)) {
         $failed_registration_message = "User with username $username already exists";
+    } elseif (!User::checkEmail($conn, $email)) {
+        $failed_registration_message = "User with email $email already exists";
     } else {
         $user = new User($username, $password, $email);
         $result = $user->create($conn);
