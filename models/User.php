@@ -103,6 +103,56 @@ class User
         return $success;
     }
 
+    /**
+     * static function to check if username enterd in registration form, already exists
+     * @param - mysqli connection and entered username
+     * @return - true if username is unique, false  if it is not
+     */
+
+    static function checkUsername(mysqli $conn, $username)
+    {
+        $sql = "SELECT *  FROM user WHERE username = ?";
+        $stmt = $conn->prepare($sql);
+        $stmt->bind_param("s", $username);
+
+        $success = $stmt->execute();
+
+
+        if ($success) {
+
+            $result = $stmt->get_result();
+            return mysqli_num_rows($result) == 0 ? true : false;
+        }
+
+        return false;
+    }
+
+    /**
+     * static function to check if email enterd in registration form, already exists
+     * @param - mysqli connection and entered email
+     * @return - true if email is unique, false  if it is not
+     */
+
+    static function checkEmail(mysqli $conn, $email)
+    {
+        $sql = "SELECT *  FROM user WHERE email = ?";
+        $stmt = $conn->prepare($sql);
+        $stmt->bind_param("s", $email);
+
+        $success = $stmt->execute();
+
+
+        if ($success) {
+
+            $result = $stmt->get_result();
+            return mysqli_num_rows($result) == 0 ? true : false;
+        }
+
+        return false;
+    }
+
+
+
 
     // getters
 
