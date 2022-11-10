@@ -162,12 +162,13 @@ $user = unserialize($_SESSION['user']);
   <!-- modal for creating recipe -->
   <div id="addNewRecipeModal">
     <div class="addNewRecipeTitle">Describe your recipe:</div>
-    <form method="POST" action="" enctype="multipart/form-data">
+    <form method="POST" action="handlers/add_recipe.php" enctype="multipart/form-data">
       <!-- multipart/form-data is needed when we use type="file"-->
-      <input type="text" name="title" placeholder="Recipe name" required />
-      <input type="number" name="prep_time" placeholder="Preparation time in minutes" required />
-      <input type="number" name="cook_time" placeholder="Cook time in minutes" required />
-      <input type="number" name="serving" placeholder="Number of servings" required />
+
+      <input type="name" name="name" placeholder="Recipe name" required />
+      <input type="number" min=1 name="prep_time" placeholder="Preparation time in minutes" required />
+      <input type="number" min=1 name="cook_time" placeholder="Cook time in minutes" required />
+      <input type="number" min=1 name="servings" placeholder="Number of servings" required />
       <input type="text" name="step_1" placeholder="Step 1" required />
       <input type="text" name="step_2" placeholder="Step 2" required />
       <input type="text" name="step_3" placeholder="Step 3" required />
