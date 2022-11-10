@@ -103,6 +103,24 @@ class User
         return $success;
     }
 
+    static function checkUsername(mysqli $conn, $username)
+    {
+        $sql = "SELECT *  FROM user WHERE username = ?";
+        $stmt = $conn->prepare($sql);
+        $stmt->bind_param("s", $username);
+
+        $success = $stmt->execute();
+
+
+        if ($success) {
+
+            $result = $stmt->get_result();
+            return mysqli_num_rows($result) == 0 ? true : false;
+        }
+
+        return false;
+    }
+
 
     // getters
 

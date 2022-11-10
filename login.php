@@ -37,6 +37,8 @@ if (isset($_POST['register']) && isset($_POST['username']) && isset($_POST['pass
         $failed_registration_message = "You need to enter every data";
     } elseif ($confirmPassword != $password) {
         $failed_registration_message = "Passwords do not match";
+    } elseif (!User::checkUsername($conn, $username)) {
+        $failed_registration_message = "User with username $username already exists";
     } else {
         $user = new User($username, $password, $email);
         $result = $user->create($conn);
