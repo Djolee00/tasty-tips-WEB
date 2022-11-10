@@ -59,4 +59,35 @@ class Recipe
 
         return $success;
     }
+
+    // function to get recipe by id
+    static function getById(mysqli $conn, $id)
+    {
+        $sql = "SELECT * FROM recipe WHERE id = ?";
+
+        $stmt = $conn->prepare($sql);   // using prepared statement to avoid SQL Injection
+        $stmt->bind_param("i", $id);
+        $success = $stmt->execute();
+
+        if ($success) {
+            $res = $stmt->get_result();
+            $array_res = $res->fetch_array();
+            $recipe = new Recipe(
+                $array_res['id'],
+                $array_res['name'],
+                $array_res['prep_time'],
+                $array_res['cook_time'],
+                $array_res['num_of_servings'],
+                $array_res['step_one'],
+                $array_res['step_two'],
+                $array_res['step_three'],
+                $array_res['description'],
+                $array_res['image'],
+                $array_res['user_id']
+            );
+            return $recipe;
+        }
+
+        return false;
+    }
 }

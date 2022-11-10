@@ -93,6 +93,16 @@ class User
     {
         // TODO : Deleting recipes
 
+        $sql = "DELETE FROM recipe WHERE user_id = ?";
+
+        $stmt = $conn->prepare($sql);
+        $stmt->bind_param("i", $id);
+        $success = $stmt->execute();
+
+        if (!$success) {
+            throw new Exception("Error deleting user's recipes");
+        }
+
         $sql = "DELETE FROM user WHERE id = ?";
         $stmt = $conn->prepare($sql);
         $stmt->bind_param("i", $id);

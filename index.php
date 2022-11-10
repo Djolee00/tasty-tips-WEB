@@ -162,17 +162,17 @@ $user = unserialize($_SESSION['user']);
   <!-- modal for creating recipe -->
   <div id="addNewRecipeModal">
     <div class="addNewRecipeTitle">Describe your recipe:</div>
-    <form method="POST" action="handlers/add_recipe.php" enctype="multipart/form-data">
+    <form id="add_recipe" method="POST" action="add_recipe" enctype="multipart/form-data">
       <!-- multipart/form-data is needed when we use type="file"-->
 
-      <input type="name" name="name" placeholder="Recipe name" required />
-      <input type="number" min=1 name="prep_time" placeholder="Preparation time in minutes" required />
-      <input type="number" min=1 name="cook_time" placeholder="Cook time in minutes" required />
-      <input type="number" min=1 name="servings" placeholder="Number of servings" required />
-      <input type="text" name="step_1" placeholder="Step 1" required />
-      <input type="text" name="step_2" placeholder="Step 2" required />
-      <input type="text" name="step_3" placeholder="Step 3" required />
-      <textarea name="description" cols="30" rows="10" placeholder="Description"></textarea>
+      <input type="name" name="name" id="name" placeholder="Recipe name" required />
+      <input type="number" min=1 name="prep_time" id="prep_time" placeholder="Preparation time in minutes" required />
+      <input type="number" min=1 name="cook_time" id="cook_time" placeholder="Cook time in minutes" required />
+      <input type="number" min=1 name="servings" id="servings" placeholder="Number of servings" required />
+      <input type="text" name="step_1" id="step_1" placeholder="Step 1" required />
+      <input type="text" name="step_2" id="step_2" placeholder="Step 2" required />
+      <input type="text" name="step_3" id="step_3" placeholder="Step 3" required />
+      <textarea name="description" id="description" cols="30" rows="10" placeholder="Description"></textarea>
       <div class="files-div">
         <label for="files" class="btn">Insert image</label>
         <input type="file" id="files" name="image" accept=".img, .jpeg, .jpg, .png, .jfif" value="Insert image" required style="visibility: hidden" />
