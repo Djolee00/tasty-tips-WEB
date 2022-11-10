@@ -1,9 +1,27 @@
 <?php
 
+require 'models/Recipe.php';
+require 'db_connection.php';
+
+session_start();
+if (!isset($_SESSION['user'])) {
+  header('Location: login.php');
+  exit();
+}
+
+if (!isset($_GET['recipe_id'])) {
+  header('Location: index.php');
+  exit();
+}
+
+$recipe = Recipe::getById($conn, $_GET['recipe_id']);
+
+if (!$recipe) {
+  header('Location: index.php');
+  exit();
+}
 
 ?>
-
-
 
 <!DOCTYPE html>
 <html lang="en">
@@ -51,14 +69,11 @@
   <!-- main -->
   <main class="page">
     <section class="recipe-hero">
-      <img src="./assets/recipes/recipe-4.jpeg" class="img recipe-hero-img" alt="pancakes" />
+      <img src="./assets/recipes/<?php echo $recipe->imageName ?>" class="img recipe-hero-img" alt="" />
       <article>
-        <h2>Banana Pancakes</h2>
+        <h2><?php echo $recipe->name ?></h2>
         <p>
-          Lorem, ipsum dolor sit amet consectetur adipisicing elit. Aliquid
-          nostrum fugiat exercitationem totam tempore et harum eaque nesciunt
-          ipsa soluta obcaecati, necessitatibus blanditiis numquam ea, quidem
-          voluptate repudiandae consectetur fugit.
+          <?php echo $recipe->description ?>
         </p>
         <!-- recipe icons -->
         <div class="recipe-icons">
@@ -66,19 +81,19 @@
           <article>
             <i class="fas fa-clock"></i>
             <h5>prep time</h5>
-            <p>30min.</p>
+            <p><?php echo $recipe->prepTime ?></p>
           </article>
           <!-- single recipe icon -->
           <article>
             <i class="far fa-clock"></i>
             <h5>cook time</h5>
-            <p>15min.</p>
+            <p><?php echo $recipe->cookTime ?></p>
           </article>
           <!-- single recipe icon -->
           <article>
             <i class="fas fa-user-friends"></i>
             <h5>servings</h5>
-            <p>6 servings</p>
+            <p><?php echo $recipe->num_of_servings ?> servings</p>
           </article>
         </div>
       </article>
@@ -94,28 +109,25 @@
             <div></div>
           </header>
           <p>
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sequi
-            commodi veniam cum amet ipsum adipisci quae.
+            <?php echo $recipe->stepOne ?>
           </p>
           <!-- single instruction -->
           <div class="single-instruction">
             <header>
-              <p>step 1</p>
+              <p>step 2</p>
               <div></div>
             </header>
             <p>
-              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sequi
-              commodi veniam cum amet ipsum adipisci quae.
+              <?php echo $recipe->stepTwo ?>
             </p>
             <!-- single instruction -->
             <div class="single-instruction">
               <header>
-                <p>step 1</p>
+                <p>step 3</p>
                 <div></div>
               </header>
               <p>
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sequi
-                commodi veniam cum amet ipsum adipisci quae.
+                <?php echo $recipe->stepThree ?>
               </p>
             </div>
       </article>

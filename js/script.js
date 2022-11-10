@@ -63,7 +63,7 @@ function renderRecipes() {
 
 // function to add div element in recipe-list for every recipe
 function createNewRecipeElement(recipe) {
-  const elementTemplate = `<a href="single_recipe.php?${recipe.id}" class="recipe">
+  const elementTemplate = `<a href="single_recipe.php?recipe_id=${recipe.id}" class="recipe">
     <img src="./assets/recipes/${recipe.image}" class="img recipe-img" alt="" />
     <h5>${recipe.name}</h5>
     <p>Prep: ${recipe.prep_time} min | Cook: ${recipe.cook_time} min</p>
