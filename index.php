@@ -137,35 +137,11 @@ $user = unserialize($_SESSION['user']);
         </div>
       </div>
       <!-- end of tag container -->
+
       <!-- recipes list -->
       <div class="recipes-list">
         <!-- single recipe -->
-        <a href="single-recipe.php" class="recipe">
-          <img src="./assets/recipes/recipe-1.jpeg" class="img recipe-img" alt="" />
-          <h5>Carne Asada</h5>
-          <p>Prep : 15min | Cook : 5min</p>
-        </a>
-        <!-- end of single recipe -->
-        <!-- single recipe -->
-        <a href="single-recipe.php" class="recipe">
-          <img src="./assets/recipes/recipe-2.jpeg" class="img recipe-img" alt="" />
-          <h5>Greek Ribs</h5>
-          <p>Prep : 15min | Cook : 5min</p>
-        </a>
-        <!-- end of single recipe -->
-        <!-- single recipe -->
-        <a href="single-recipe.php" class="recipe">
-          <img src="./assets/recipes/recipe-3.jpeg" class="img recipe-img" alt="" />
-          <h5>Vegetable Soup</h5>
-          <p>Prep : 15min | Cook : 5min</p>
-        </a>
-        <!-- end of single recipe -->
-        <!-- single recipe -->
-        <a href="single-recipe.php" class="recipe">
-          <img src="./assets/recipes/recipe-4.jpeg" class="img recipe-img" alt="" />
-          <h5>Banana Pancakes</h5>
-          <p>Prep : 15min | Cook : 5min</p>
-        </a>
+
         <!-- end of single recipe -->
       </div>
       <!-- end of recipes list -->
