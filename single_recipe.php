@@ -81,13 +81,13 @@ if (!$recipe) {
           <article>
             <i class="fas fa-clock"></i>
             <h5>prep time</h5>
-            <p><?php echo $recipe->prepTime ?></p>
+            <p><?php echo $recipe->prepTime ?> min</p>
           </article>
           <!-- single recipe icon -->
           <article>
             <i class="far fa-clock"></i>
             <h5>cook time</h5>
-            <p><?php echo $recipe->cookTime ?></p>
+            <p><?php echo $recipe->cookTime ?> min</p>
           </article>
           <!-- single recipe icon -->
           <article>

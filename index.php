@@ -105,30 +105,30 @@ $user = unserialize($_SESSION['user']);
           <div class="first-row">
             <div>
               <label for="">Name:</label>
-              <input id="filter-brand" type="search" class="form-control form-control-dark" placeholder="Search..." aria-label="Search" />
+              <input id="filter-name" type="search" class="form-control form-control-dark" placeholder="Search..." aria-label="Search" />
             </div>
             <div class="preptime-div">
               <div>
                 <label for="">Preparation time from: </label>
-                <input id="filter-priceFrom" type="number" class="form-control form-control-dark" placeholder="Search..." aria-label="Search" />
+                <input id="filter-prepTimeFrom" type="number" min=0 class="form-control form-control-dark" placeholder="Search..." aria-label="Search" />
               </div>
               <div>
                 <label for="">Preparation time to:</label>
-                <input id="filter-priceTo" type="number" class="form-control form-control-dark" placeholder="Search..." aria-label="Search" />
+                <input id="filter-prepTimeTo" type="number" min=0 class="form-control form-control-dark" placeholder="Search..." aria-label="Search" />
               </div>
             </div>
             <div class="year-div">
               <div>
                 <label for="">Cook time from:</label>
-                <input id="filter-yearFrom" type="number" class="form-control form-control-dark" placeholder="Search..." aria-label="Search" />
+                <input id="filter-cookTimeFrom" type="number" min=0 class="form-control form-control-dark" placeholder="Search..." aria-label="Search" />
               </div>
               <div>
                 <label for="">Cook time to:</label>
-                <input id="filter-yearTo" type="number" class="form-control form-control-dark" placeholder="Search..." aria-label="Search" />
+                <input id="filter-cookTimeTo" type="number" min=0 class="form-control form-control-dark" placeholder="Search..." aria-label="Search" />
               </div>
             </div>
             <hr />
-            <button type="button" class="search-icon btn btn-success" onclick="">
+            <button type="button" class="search-icon btn btn-success" onclick="filterRecipes()">
               <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
                 <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"></path>
               </svg>

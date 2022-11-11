@@ -90,4 +90,57 @@ class Recipe
 
         return false;
     }
+
+
+    // function to filter recipes from DB
+    static function filterRecipes(
+        mysqli $conn,
+        $name,
+        $prepTimeFrom,
+        $prepTimeTo,
+        $cookTimeFrom,
+        $cookTimeTo
+    ) {
+
+        if ((!empty($prepTimeTo) && $prepTimeTo < $prepTimeFrom) || (!empty($cookTimeTo) && $cookTimeTo < $cookTimeFrom)) {
+            return array();
+        }
+
+        $sql = "SELECT * FROM recipe WHERE 1=1";
+
+        if (!empty($name)) {
+            $name = strtolower($name);
+            $sql .= " AND LOWER(name) LIKE '$name%'";
+        }
+
+        if (!empty($prepTimeFrom)) {
+            $prepTimeFrom = (int) $prepTimeFrom;
+            $sql .= " AND prep_time >= $prepTimeFrom";
+        }
+
+        if (!empty($prepTimeTo)) {
+            $prepTimeTo = (int) $prepTimeTo;
+            $sql .= " AND prep_time <= $prepTimeTo";
+        }
+
+        if (!empty($cookTimeFrom)) {
+            $cookTimeFrom = (int) $cookTimeFrom;
+            $sql .= " AND cook_time >= $cookTimeFrom";
+        }
+
+
+        if (!empty($cookTimeTo)) {
+            $cookTimeTo = (int) $cookTimeTo;
+            $sql .= " AND cook_time <= $cookTimeTo";
+        }
+
+        $result = $conn->query($sql);
+        $array = [];
+        if ($result && $result->num_rows > 0) {
+            while ($row = $result->fetch_assoc()) {
+                $array[] = $row;
+            }
+            return $array;
+        }
+    }
 }
