@@ -12,6 +12,16 @@ if (isset($_POST['username']) && isset($_POST['email'])) {
     $username = sanitizeUserInput($_POST['username']);
     $email = sanitizeUserInput($_POST['email']);
 
+    if (!User::checkUsername($conn, $username)) {
+        header("Location: ../../index.php?message='Username already exists'");
+        exit();
+    }
+
+    if (!User::checkEmail($conn, $email)) {
+        header("Location: ../../index.php?message='Email already exists'");
+        exit();
+    }
+
     $user = unserialize($_SESSION['user']);
     $user->setUsername($username);
     $user->setEmail($email);
