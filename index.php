@@ -83,19 +83,19 @@ $user = unserialize($_SESSION['user']);
         <div class="search-sort-list">
           <!-- sorting part -->
           <label for="">Sort by:</label>
-          <select id="sort-select" class="form-select form-select-sm" aria-label=".form-select-sm example" onchange="">
-            <option value="prep_time" selected>Preparation time</option>
+          <select id="sort-select" class="form-select form-select-sm" aria-label=".form-select-sm example" onchange="sortRecipes()">
+            <option value="name" selected>Name</option>
+            <option value="prep_time">Preparation time</option>
             <option value="cook_time">Cook time</option>
-            <option value="name">Name</option>
           </select>
           <div class="form-check">
-            <input class="form-check-input" type="radio" name="sortOrderRadio" id="sortOrderRadio1" value="asc" onchange="" />
+            <input class="form-check-input" type="radio" name="sortOrderRadio" id="sortOrderRadio1" value="asc" checked onchange="sortRecipes()" />
             <label class="form-check-label" for="sortOrderRadio1">
               Ascending
             </label>
           </div>
           <div class="form-check">
-            <input class="form-check-input" type="radio" name="sortOrderRadio" id="sortOrderRadio2" value="desc" checked onchange="sortAds()" />
+            <input class="form-check-input" type="radio" name="sortOrderRadio" id="sortOrderRadio2" value="desc" onchange="sortRecipes()" />
             <label class="form-check-label" for="sortOrderRadio2">
               Descending
             </label>
