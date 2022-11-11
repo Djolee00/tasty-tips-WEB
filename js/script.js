@@ -2,6 +2,7 @@
 
 let recipes = [];
 const recipesContainerElement = document.querySelector(".recipes-list");
+const sortSelect = document.querySelector("#sort-select");
 
 getRecipes();
 
@@ -43,7 +44,7 @@ function getRecipes() {
         console.log(response);
         response = JSON.parse(response); // because we are getting recipes in JSON file
         recipes = response;
-        renderRecipes();
+        sortRecipes();
       } catch (error) {
         console.log(`Error parsing response from server: ${error}`);
         return;
@@ -89,9 +90,8 @@ $(document).ready(function (e) {
       success: function (response) {
         console.log(response);
         if (response == "Success") {
-          alert("Recipe has benn added successfully!");
+          alert("Recipe has been added successfully!");
           getRecipes();
-          renderRecipes();
         } else {
           alert("Problem adding recipe, try again!");
         }
@@ -103,3 +103,39 @@ $(document).ready(function (e) {
     });
   });
 });
+
+// functio to sort Recipe based on choice
+
+function sortRecipes() {
+  const sortingParam = sortSelect.value;
+  const sortOrder = document.querySelector(
+    'input[name="sortOrderRadio"]:checked'
+  ).value;
+
+  if (sortingParam == "prep_time" || sortingParam == "cook_time") {
+    recipes.sort((a, b) => {
+      aValue = parseInt(a[sortingParam]);
+      bValue = parseInt(b[sortingParam]);
+      if (sortOrder == "asc") {
+        return aValue < bValue ? -1 : 1;
+      } else if (sortOrder == "desc") {
+        return aValue > bValue ? -1 : 1;
+      } else {
+        return 0;
+      }
+    });
+  } else {
+    recipes.sort((a, b) => {
+      aValue = a[sortingParam];
+      bValue = b[sortingParam];
+      if (sortOrder == "asc") {
+        return aValue < bValue ? -1 : 1;
+      } else if (sortOrder == "desc") {
+        return aValue > bValue ? -1 : 1;
+      } else {
+        return 0;
+      }
+    });
+  }
+  renderRecipes();
+}
