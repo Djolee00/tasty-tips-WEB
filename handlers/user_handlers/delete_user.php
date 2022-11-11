@@ -1,7 +1,7 @@
 <?php
 
-require '../db_connection.php';
-require '../models/User.php';
+require '../../db_connection.php';
+require '../../models/User.php';
 
 
 // this file handles POST

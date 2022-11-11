@@ -14,7 +14,7 @@ $(document).ready(function () {
 
     // AJAX Request
     $.ajax({
-      url: "./handlers/delete_user.php",
+      url: "./handlers/user_handlers/delete_user.php",
       type: "POST",
       data: { id: deleteid },
       success: function (response) {
@@ -36,10 +36,11 @@ $(document).ready(function () {
 // GET Request for Recipes for main page
 function getRecipes() {
   $.ajax({
-    url: "./handlers/get_recipes.php?getAll",
+    url: "./handlers/recipe_handlers/get_recipes.php?getAll",
     type: "GET",
     success: function (response) {
       try {
+        console.log(response);
         response = JSON.parse(response); // because we are getting recipes in JSON file
         recipes = response;
         renderRecipes();
@@ -79,7 +80,7 @@ $(document).ready(function (e) {
     e.preventDefault(); // prevent page from reload
 
     $.ajax({
-      url: "./handlers/add_recipe.php",
+      url: "./handlers/recipe_handlers/add_recipe.php",
       type: "POST",
       data: new FormData(this),
       processData: false,

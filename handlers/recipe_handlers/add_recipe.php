@@ -1,8 +1,8 @@
 <?php
 
-require '../db_connection.php';
-require '../models/User.php';
-require '../models/Recipe.php';
+require '../../db_connection.php';
+require '../../models/User.php';
+require '../../models/Recipe.php';
 
 /**
  *  this is file which handles POST request for adding recipe
@@ -37,7 +37,7 @@ $image = $_FILES['image'];
 $image_extension = pathinfo($image['name'], PATHINFO_EXTENSION); // to get extension of image (example .jpeg .png)
 $image['name'] = guidv4() . '.' . $image_extension; // because images can maybe have same names, i generate random names to store them in db
 
-move_uploaded_file($image['tmp_name'], '../assets/recipes/' . $image['name']);
+move_uploaded_file($image['tmp_name'], '../../assets/recipes/' . $image['name']);
 
 $imageName = $image['name'];
 

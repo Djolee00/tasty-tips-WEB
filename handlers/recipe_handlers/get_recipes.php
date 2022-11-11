@@ -1,7 +1,7 @@
 <?php
 
-require '../db_connection.php';
-require '../models/Recipe.php';
+require '../../db_connection.php';
+require '../../models/Recipe.php';
 
 // the response is JSON file with all recipes from DB
 if (isset($_GET['getAll'])) {

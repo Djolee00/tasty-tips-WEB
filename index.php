@@ -51,7 +51,7 @@ $user = unserialize($_SESSION['user']);
       </div>
       <!-- links -->
       <div class="nav-links">
-        <a href="index.html" class="nav-link">Home</a>
+        <a href="index.php" class="nav-link">Home</a>
         <a href="#" class="nav-link" onclick="popAddNewRecipeModal(true)">Add recipe</a>
         <a href="#" class="nav-link" onclick="popEditProfileDataModal(true)">Edit profile</a>
         <a href="#" class="nav-link" onclick="popDeleteProfileModal(true)">Delete profile</a>
@@ -162,7 +162,7 @@ $user = unserialize($_SESSION['user']);
   <!-- modal for creating recipe -->
   <div id="addNewRecipeModal">
     <div class="addNewRecipeTitle">Describe your recipe:</div>
-    <form id="add_recipe" method="POST" action="add_recipe" enctype="multipart/form-data">
+    <form id="add_recipe" method="POST" action="" enctype="multipart/form-data">
       <!-- multipart/form-data is needed when we use type="file"-->
 
       <input type="name" name="name" id="name" placeholder="Recipe name" required />
@@ -210,7 +210,7 @@ $user = unserialize($_SESSION['user']);
     <div class="editProfileDataModal">
       <strong>Change your profile data:</strong>
     </div>
-    <form method="POST" action="handlers/edit_user.php">
+    <form method="POST" action="handlers/user_handlers/edit_user.php">
       <label for="username">Username: </label>
       <input type="text" name="username" id="username" value="<?php echo $user->getUsername(); ?>" />
 
@@ -220,7 +220,7 @@ $user = unserialize($_SESSION['user']);
     </form>
     <hr />
     <div class="editProfileDataModal"><strong>Change password: </strong></div>
-    <form method="POST" action="handlers/edit_user.php">
+    <form method="POST" action="handlers/user_handlers/edit_user.php">
       <label for="old-password">Old password: </label>
       <input type="password" name="old-password" id="old-password" />
 
