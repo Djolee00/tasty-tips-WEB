@@ -10,3 +10,22 @@ if (isset($_GET['getAll'])) {
     $res = json_encode($recipes);
     echo  $res;
 }
+
+if (isset($_GET['filter'])) {
+    echo json_encode(Recipe::filterRecipes(
+        $conn,
+        sanitizeUserData($_POST['name']),
+        $_POST['prepTimeFrom'],
+        $_POST['prepTimeTo'],
+        $_POST['cookTimeFrom'],
+        $_POST['cookTimeTo']
+    ));
+}
+
+function sanitizeUserData($data)
+{
+    $data = trim($data);
+    $data = stripslashes($data);
+    $data = htmlspecialchars($data);
+    return $data;
+}

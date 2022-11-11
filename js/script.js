@@ -3,6 +3,13 @@
 let recipes = [];
 const recipesContainerElement = document.querySelector(".recipes-list");
 const sortSelect = document.querySelector("#sort-select");
+const filters = {
+  name: document.querySelector("#filter-name"),
+  prepTimeFrom: document.querySelector("#filter-prepTimeFrom"),
+  prepTimeTo: document.querySelector("#filter-prepTimeTo"),
+  cookTimeFrom: document.querySelector("#filter-cookTimeFrom"),
+  cookTimeTo: document.querySelector("#filter-cookTimeTo"),
+};
 
 getRecipes();
 
@@ -42,8 +49,12 @@ function getRecipes() {
     success: function (response) {
       try {
         console.log(response);
-        response = JSON.parse(response); // because we are getting recipes in JSON file
-        recipes = response;
+        if (response != null) {
+          response = JSON.parse(response); // because we are getting recipes in JSON file
+          recipes = response;
+        } else {
+          recipes = [];
+        }
         sortRecipes();
       } catch (error) {
         console.log(`Error parsing response from server: ${error}`);
@@ -60,7 +71,8 @@ function getRecipes() {
 // function to show (render recipe)
 function renderRecipes() {
   recipesContainerElement.innerHTML = ""; // this will make my div empty
-  recipes.forEach((recipe) => createNewRecipeElement(recipe)); // for each recipe it adds content in html
+  if (recipes != null)
+    recipes.forEach((recipe) => createNewRecipeElement(recipe)); // for each recipe it adds content in html
 }
 
 // function to add div element in recipe-list for every recipe
@@ -138,4 +150,42 @@ function sortRecipes() {
     });
   }
   renderRecipes();
+}
+
+// AJAX for filtering recipes
+
+function filterRecipes() {
+  var formData = new FormData();
+  formData.append("name", filters.name.value);
+  formData.append("prepTimeFrom", filters.prepTimeFrom.value);
+  formData.append("prepTimeTo", filters.prepTimeTo.value);
+  formData.append("cookTimeFrom", filters.cookTimeFrom.value);
+  formData.append("cookTimeTo", filters.cookTimeTo.value);
+
+  $.ajax({
+    url: "./handlers/recipe_handlers/get_recipes.php?filter",
+    type: "POST",
+    data: formData,
+    processData: false,
+    contentType: false,
+    success: function (response) {
+      try {
+        console.log(response);
+        if (response != null) {
+          response = JSON.parse(response); // because we are getting recipes in JSON file
+          recipes = response;
+        } else {
+          recipes = [];
+        }
+        sortRecipes();
+      } catch (error) {
+        console.log(`Error parsing response from server: ${error}`);
+        return;
+      }
+    },
+    error: function (XMLHttpRequest, textStatus, errorThrown) {
+      alert("Status: " + textStatus);
+      alert("Error: " + errorThrown);
+    },
+  });
 }
