@@ -102,6 +102,11 @@ class Recipe
         $cookTimeTo
     ) {
 
+        if (!empty($name) && !Recipe::getByName($conn, $name)) {
+            return array();
+        }
+
+
         if ((!empty($prepTimeTo) && $prepTimeTo < $prepTimeFrom) || (!empty($cookTimeTo) && $cookTimeTo < $cookTimeFrom)) {
             return array();
         }
@@ -135,12 +140,23 @@ class Recipe
         }
 
         $result = $conn->query($sql);
-        $array = [];
+        $array = array();
+
         if ($result && $result->num_rows > 0) {
             while ($row = $result->fetch_assoc()) {
                 $array[] = $row;
             }
-            return $array;
         }
+        return $array;
+    }
+
+    static function getByName(mysqli $conn, $name)
+    {
+        $sql = "SELECT * FROM recipe WHERE name LIKE '$name%'";
+        $result = $conn->query($sql);
+        if ($result && $result->num_rows > 0)
+            return true;
+        else
+            return false;
     }
 }
